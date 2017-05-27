@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cowboy, Ninja, Bear</title>
+	<link href="https://fonts.googleapis.com/css?family=Chelsea+Market|Raleway:400,700" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="side">
+	
+		<div class="intro">
+			<h1>Cowboy, Ninja, Bear!</h1>
+			<h2>A "Rock, Paper, Scissors" style game with a fun twist</h2>
+			<a href="javascript:void(0);" id="instructionsBtn" class="btn">Instructions</a>
+			<a href="javascript:void(0);" id="startBtn" class="btn">Play Now!</a>
+		</div>
+		
+		<div id="instructions">
+			<h2>Instructions:</h2>
+			<p>Chose an option on the right to begin playing.</p>
+			<ul>
+				<li>Ninja beats Cowboy using lighting speed ninja kicks</li>
+				<li>Cowboy beats Bear with his quick draw and perfect accuracy</li>
+				<li>Bear beats Ninja with a strong swipe of his clawed paw</li>
+			</ul>
+			<a href="javascript:void(0);" class="btn">Ok, Got It</a>
+		</div>
+	</div>
+	
+	<div id="game">
+		<h2>Make Your Choice:</h2>
+		<div id="choices">
+			<button id="cowboy" class="btn">Cowboy</button>
+			<button id="ninja" class="btn">Ninja</button>
+			<button id="bear" class="btn">Bear</button>
+		</div>
+		<div id="results"></div>
+		<a href="javascript:void(0);" id="resetBtn" class="btn">Play Again?</a>
+	</div>		
+		
+	<script src="scripts.js"></script>
+</body>
+</html>
