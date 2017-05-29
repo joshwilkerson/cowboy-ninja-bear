@@ -15,13 +15,21 @@
 			<h2>A "Rock, Paper, Scissors" style game with a fun twist</h2>
 			<a href="javascript:void(0);" id="instructionsBtn" class="btn">Instructions</a>
 			<a href="javascript:void(0);" id="startBtn" class="btn">Play Now!</a>
+			
+<!--
+			<div id="score">
+				<h2>Score</h2>
+				<h3>You:</h3><span id="userScore">0</span>
+				<h3>Computer:</h3><span id="computerScore">0</span>
+			</div>
+-->
 		</div>
 		
 		<div id="instructions">
 			<h2>Instructions:</h2>
-			<p>Chose an option on the right to begin playing.</p>
+			<p>Chose an option on the right to begin.</p>
 			<ul>
-				<li>Ninja beats Cowboy using lighting speed ninja kicks</li>
+				<li>Ninja beats Cowboy using his lighting speed kicks</li>
 				<li>Cowboy beats Bear with his quick draw and perfect accuracy</li>
 				<li>Bear beats Ninja with a strong swipe of his clawed paw</li>
 			</ul>
@@ -30,14 +38,16 @@
 	</div>
 	
 	<div id="game">
-		<h2>Make Your Choice:</h2>
-		<div id="choices">
-			<button id="cowboy" class="btn">Cowboy</button>
-			<button id="ninja" class="btn">Ninja</button>
-			<button id="bear" class="btn">Bear</button>
+		<div class="inner">
+			<h2>Make Your Choice:</h2>
+			<div id="choices">
+				<button id="cowboy" class="btn">Cowboy</button>
+				<button id="ninja" class="btn">Ninja</button>
+				<button id="bear" class="btn">Bear</button>
+			</div>
+			<div id="results"></div>
+			<a href="javascript:void(0);" id="resetBtn" class="btn ease">Play Again?</a>
 		</div>
-		<div id="results"></div>
-		<a href="javascript:void(0);" id="resetBtn" class="btn">Play Again?</a>
 	</div>		
 		
 	<script src="scripts.js"></script>

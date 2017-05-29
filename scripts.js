@@ -1,36 +1,54 @@
 const resetBtn = document.getElementById('resetBtn');
-const instructions = document.getElementById('instructions');
+const startBtn = document.getElementById('startBtn');
 
-// set available options
-const computerChoices = ['cowboy', 'ninja', 'bear'];
-	
+const instructions = document.getElementById('instructions');
+const results = document.getElementById('results');
+
+// game choices
+const choices = ['cowboy', 'ninja', 'bear'];
+
+
+startBtn.addEventListener('click', function(){
+	document.querySelector('.inner').classList.add('active');
+});
+
 // define user choices and listen for click event
 const userChoices = document.querySelectorAll('#choices > button');
-userChoices.forEach(choice => choice.addEventListener('click', setUserChoice));
+userChoices.forEach(choice => choice.addEventListener('click', runGame));
 
 // set user choice based on button clicked and computer choice from array
-function setUserChoice(){
+function runGame(){
+	// user choice from button ID
 	let userChoice = this.id;
-	let computerChoice = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 	
-	showResults("you chose " + userChoice);
-	showResults("computer chose " + computerChoice);
+	// computer choice randomly chosen from array
+	let computerChoice = choices[Math.floor(Math.random() * choices.length)];
+	
+	// disable choice buttons
+	userChoices.forEach(choice => choice.setAttribute('disabled', true));
+	
+	// display results
+	resetBtn.classList.add('ease');
+	showResults(`you chose <strong>${userChoice}</strong>`);
+	showResults(`computer chose <strong>${computerChoice}`);
 	showResults(compare(userChoice,computerChoice));
-	showResetButton();
+	
+	// show reset button
+	resetBtn.classList.add('show');
 }
 
 // display game choices and winner		
-const results = document.getElementById('results');
 function showResults(value) {
 	results.innerHTML += "<p>" + value + "</p>";
 }
-	
+
+
 // compare user and computer choices
 let compare = function(choice1,choice2) {
-if(choice1 === choice2) {
-  return "The result is a tie!";
-}
-	
+	if(choice1 === choice2) {
+	  return "The result is a tie!";
+	}
+		
 	if(choice1 === "cowboy") {
 		if(choice2 === "bear") {
   		return "cowboy wins!";
@@ -45,21 +63,18 @@ if(choice1 === choice2) {
   	}  
 	} else {
 		if(choice2 === "cowboy"){
-  		return "cowboy wins!";  
+  		return "cowboy wins!";
 		} else {
-  		return "bear wins!";  
+  		return "bear wins!";
   	}	
 	}
 }
 
 
-function showResetButton() {
-	resetBtn.classList.add('show');
-}
-
 function resetGame(){
 	results.innerHTML = "";
 	resetBtn.classList.remove('show');
+	userChoices.forEach(choice => choice.removeAttribute('disabled'));
 }
 
 
@@ -73,6 +88,8 @@ document.querySelector('#instructions > a').addEventListener('click', function()
 })
 
 
-
 // reset button
-document.getElementById('resetBtn').addEventListener('click', resetGame);
+resetBtn.addEventListener('click', resetGame);
+resetBtn.addEventListener('transitionend', function(){
+	this.classList.remove('ease');
+});

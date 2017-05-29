@@ -50,7 +50,6 @@ html, body {
 		font-size: 3.8vw;
 		margin:0 0 10px 0;
 		color:#29B6F6;
-		
 	}
 	
 	.intro h2 {
@@ -89,6 +88,29 @@ html, body {
 	#instructions li {
 		margin-bottom:10px;
 	}
+	
+	#instructions .btn {
+		background:#fff;
+		color:#222;
+	}
+	
+	#instructions .btn:hover {
+		background:rgba(255, 255, 255, 0.9);
+	}
+
+/*
+#score {
+	display: block;
+}
+
+	#score h2 {
+		margin:0;
+	}
+	
+	#score h3 {
+		margin:0;
+	}
+*/
 
 #game {
 	position: fixed;
@@ -120,6 +142,23 @@ html, body {
 	#game .btn:hover {
 		background:rgba(255,255,255,0.9);
 	}
+	
+	#game .btn:disabled {
+		background:rgba(255, 255, 255, 0.5) !important;
+	}
+	
+	#game .inner {
+		position: absolute;
+		top:-20px;
+		left:60px;
+		opacity: 0;
+		transition:all ease-in .2s;
+	}
+	
+		#game .inner.active {
+			opacity: 1;
+			top:40px;
+		}
 
 #results {
 	margin-top:20px;
@@ -138,12 +177,15 @@ html, body {
 	}
 	
 #resetBtn {
-	opacity: 0;
 	font-size: .65em;
 	margin-top:30px;
-	transition:background ease .2s, opacity ease-in .3s .5s;
+	opacity: 0;
 }
 
 	#resetBtn.show {
 		opacity: 1;
+	}
+	
+	#resetBtn.ease {
+		transition:all ease .2s .3s;
 	}
