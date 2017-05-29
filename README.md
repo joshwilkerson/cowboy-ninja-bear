@@ -1,2 +1,2 @@
 # cowboy-ninja-bear
-A simple javascript game
+A simple "rock, paper, scissors" type game powered by javascript
