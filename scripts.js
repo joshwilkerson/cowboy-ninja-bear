@@ -4,12 +4,15 @@ const startBtn = document.getElementById('startBtn');
 const instructions = document.getElementById('instructions');
 const results = document.getElementById('results');
 
-// game choices
 const choices = ['cowboy', 'ninja', 'bear'];
 
+let userPoints = 0;
+let computerPoints = 0;
 
+// "start game" button
 startBtn.addEventListener('click', function(){
 	document.querySelector('.inner').classList.add('active');
+	document.getElementById('score').classList.add('show');
 });
 
 // define user choices and listen for click event
@@ -31,7 +34,43 @@ function runGame(){
 	resetBtn.classList.add('ease');
 	showResults(`you chose <strong>${userChoice}</strong>`);
 	showResults(`computer chose <strong>${computerChoice}`);
-	showResults(compare(userChoice,computerChoice));
+	
+	// compare user and computer choice
+	if(userChoice === computerChoice) { 
+	// is it a tie?
+	  showResults("The result is a tie!");
+	} else { 
+	// if choices are different
+		if(userChoice === "cowboy") {
+			if(computerChoice === "bear") {
+	  		showResults("cowboy wins!");
+	  		userPoints++;
+	  	} else {
+	  		showResults("ninja wins!");
+	  		computerPoints++;
+	  	}
+		} else if(userChoice === "ninja") {
+			if(computerChoice === "cowboy") {
+	  		showResults("ninja wins!");
+	  		userPoints++;
+	  	} else {
+	    	showResults("bear wins!");
+	    	computerPoints++;
+	  	}  
+		} else if(userChoice == "bear") {
+			if(computerChoice === "ninja"){
+	  		showResults("bears wins!");
+	  		userPoints++;
+			} else {
+	  		showResults("cowboy wins!");
+	  		computerPoints++;
+	  	}	
+		}
+	}
+	
+	// update score
+	document.getElementById('userScore').innerHTML = userPoints;
+	document.getElementById('computerScore').innerHTML = computerPoints;
 	
 	// show reset button
 	resetBtn.classList.add('show');
@@ -42,40 +81,6 @@ function showResults(value) {
 	results.innerHTML += "<p>" + value + "</p>";
 }
 
-
-// compare user and computer choices
-let compare = function(choice1,choice2) {
-	if(choice1 === choice2) {
-	  return "The result is a tie!";
-	}
-		
-	if(choice1 === "cowboy") {
-		if(choice2 === "bear") {
-  		return "cowboy wins!";
-  	} else {
-  		return "ninja wins!";
-  	}
-	} else if(choice1 === "ninja") {
-		if(choice2 === "cowboy") {
-  		return "ninja wins!";
-  	} else {
-    	return "bear wins!";
-  	}  
-	} else {
-		if(choice2 === "cowboy"){
-  		return "cowboy wins!";
-		} else {
-  		return "bear wins!";
-  	}	
-	}
-}
-
-
-function resetGame(){
-	results.innerHTML = "";
-	resetBtn.classList.remove('show');
-	userChoices.forEach(choice => choice.removeAttribute('disabled'));
-}
 
 
 // show/hide instructions
@@ -93,3 +98,9 @@ resetBtn.addEventListener('click', resetGame);
 resetBtn.addEventListener('transitionend', function(){
 	this.classList.remove('ease');
 });
+
+function resetGame() {
+	results.innerHTML = "";
+	resetBtn.classList.remove('show');
+	userChoices.forEach(choice => choice.removeAttribute('disabled'));
+}

@@ -98,19 +98,33 @@ html, body {
 		background:rgba(255, 255, 255, 0.9);
 	}
 
-/*
 #score {
 	display: block;
+	margin-top:50px;
+	opacity: 0;
+	transition: all ease-in-out .2s;
 }
+
+	#score.show {
+		opacity: 1;
+		margin-top:20px;
+	}
 
 	#score h2 {
 		margin:0;
+		font-family: 'Chelsea Market', cursive;
+		color:#29B6F6;
+		font-size: 1.8em;
 	}
 	
 	#score h3 {
-		margin:0;
+		margin:5px 3px 5px 0;
+		display: inline-block;
 	}
-*/
+	
+	#score span {
+		display: inline-block;
+	}
 
 #game {
 	position: fixed;
